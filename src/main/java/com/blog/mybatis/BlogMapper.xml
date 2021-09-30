@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.blog.dao.BlogDAO">
+
+	<insert id="join">
+		INSERT INTO blog_user (
+		    username,
+		    password,
+		    email,
+		    address
+		) VALUES (
+		    #{username },
+		    #{password },
+		    #{email },
+		    #{address }
+		)
+				
+	</insert>
+	
+	<select id="idCheck" resultType="int">
+		SELECT COUNT(USERNAME) FROM BLOG_USER WHERE USERNAME = #{id } 
+	</select>
+	
+	<select id="login" resultType="com.blog.vo.LoginVO">
+		SELECT ID,USERNAME,PASSWORD FROM BLOG_USER WHERE USERNAME = #{username } 
+	</select>
+	
+	<insert id="write">
+		INSERT INTO BLOG_BOARD (TITLE, CONTENT, USERID) VALUES (#{title }, #{content}, #{userId }) 
+	</insert>
+	
+	<select id="boardList" resultType="com.blog.vo.BoardVO" parameterType="map">
+		select * from (select rownum n,b.*, count(*) over() total from blog_board b order by create_date desc) s where s.n between #{start } and #{end }
+	
+	</select>
+
+</mapper>
