@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -153,11 +154,17 @@ public class MainController {
 		return "blog/userInfo";
 	}
 	
+	@Transactional
 	@GetMapping("/board/detail/{id}")
-	public String boardDetail(@PathVariable int id) {
+	public String boardDetail(@PathVariable int id,Model model) {
 		
 		System.out.println(id);
 		
+		BoardVO boardDetail = blogService.boardDetail(id);
+		
+		System.out.println(boardDetail);
+		
+		model.addAttribute("boardDetail", boardDetail);
 		
 		return "blog/detail";
 	}

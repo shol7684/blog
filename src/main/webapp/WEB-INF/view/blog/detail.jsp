@@ -10,15 +10,15 @@
 
 	<br /> <br />
 	<h6 class="m-2">
-		작성자 : <i>${dto.username}</i> 조회수 : <i>${dto.readCount}</i>
+		작성자 : <i>${boardDetail.userId}</i> 조회수 : <i>${boardDetail.readCount}</i>
 	</h6>
 	<br />
 	<h3 class="m-2">
-		<b>${dto.title}</b>
+		<b>${boardDetail.title}</b>
 	</h3>
 	<hr />
 	<div class="form-group">
-		<div class="m-2">${dto.content}</div>
+		<div class="m-2">${boardDetail.content}</div>
 	</div>
 
 	<hr />

@@ -54,6 +54,16 @@ public class BlogDAOImp implements BlogDAO {
 		System.out.println("map = " + map);
 		return sql.selectList(namespace + ".boardList", map) ;
 	}
+
+	@Override
+	public BoardVO boardDetail(int id) {
+		return sql.selectOne(namespace + ".boardDetail" , id);
+	}
+
+	@Override
+	public void readCountUpdate(int id) {
+		sql.update(namespace + ".readCountUpdate", id);
+	}
 	
 	
 }

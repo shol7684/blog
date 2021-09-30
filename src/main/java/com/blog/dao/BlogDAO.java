@@ -20,4 +20,8 @@ public interface BlogDAO {
 
 	List<BoardVO>  boardList(int start, int end);
 
+	BoardVO boardDetail(int id);
+
+	void readCountUpdate(int id);
+
 }

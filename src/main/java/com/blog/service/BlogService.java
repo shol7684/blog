@@ -20,4 +20,6 @@ public interface BlogService {
 
 	List<BoardVO>  boardList(int start, int end);
 
+	BoardVO boardDetail(int id);
+
 }

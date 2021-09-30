@@ -42,4 +42,10 @@ public class BlogServiceImp implements BlogService {
 		return blogDAO.boardList(start, end);
 	}
 
+	@Override
+	public BoardVO boardDetail(int id) {
+		blogDAO.readCountUpdate(id);
+		return blogDAO.boardDetail(id);
+	}
+
 }

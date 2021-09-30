@@ -33,7 +33,23 @@
 	
 	<select id="boardList" resultType="com.blog.vo.BoardVO" parameterType="map">
 		select * from (select rownum n,b.*, count(*) over() total from blog_board b order by create_date desc) s where s.n between #{start } and #{end }
-	
 	</select>
+	
+	<select id="boardDetail" resultType="com.blog.vo.BoardVO">
+		SELECT
+		    id,
+		    title,
+		    content,
+		    read_count,
+		    create_date,
+		    userid
+		FROM
+		    blog_board
+		    WHERE ID = #{id }
+	</select>
+	
+	<update id="readCountUpdate">
+		 update blog_board set read_count = read_count + 1 where id = #{id }
+	</update>
 
 </mapper>
