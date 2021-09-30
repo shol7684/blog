@@ -48,4 +48,16 @@ public class BlogServiceImp implements BlogService {
 		return blogDAO.boardDetail(id);
 	}
 
+	@Override
+	public void boardDelete(int id) {
+		blogDAO.boardDelete(id);
+		
+	}
+
+	@Override
+	public void boardModify(BoardVO boardVO) {
+		blogDAO.boardModify(boardVO);
+		
+	}
+
 }

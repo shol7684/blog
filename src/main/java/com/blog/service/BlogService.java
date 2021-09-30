@@ -22,4 +22,8 @@ public interface BlogService {
 
 	BoardVO boardDetail(int id);
 
+	void boardDelete(int id);
+
+	void boardModify(BoardVO boardVO);
+
 }

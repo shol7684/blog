@@ -4,9 +4,19 @@
 <%@ include file="../include/header.jsp" %>
 
 <div class="container">
-		<a href="/blog/board?cmd=updateForm&id=${dto.id}"
-			class="btn btn-warning">수정</a>
-		<button onClick="deleteById(${dto.id})" class="btn btn-danger">삭제</button>
+		
+		<c:if test="${user.id == boardDetail.userId }">
+			<form action="/board/modifyPage" method="post" style="display: inline;">
+				<input type="hidden" value="${boardDetail.id}" name="id">
+				<input type="hidden" value="${boardDetail.title}" name="title">
+				<input type="hidden" value="${boardDetail.content}" name="content">
+				
+				<input type="submit" value="수정" class="btn btn-warning">
+			</form>
+			
+			
+			<button class="btn btn-danger" id="delete_btn">삭제</button>
+		</c:if>
 
 	<br /> <br />
 	<h6 class="m-2">
@@ -73,6 +83,22 @@
 	<!-- 댓글 박스 끝 -->
 </div>
 
-<script src="/blog/js/boardDetail.js"></script>
+<script>
+	$("#delete_btn").click(function(){
+		if(confirm("삭제하시겠습니까?")){
+			var id = ${boardDetail.id};
+			
+			$.ajax({
+				type: "POST",
+				url: "/board/delete",
+				data: {"id" : id},
+				success: function(){
+					location.replace("/list");
+				}
+			});
+		}
+	})
+</script>
+
 </body>
 </html>

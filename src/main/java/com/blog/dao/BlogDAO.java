@@ -24,4 +24,8 @@ public interface BlogDAO {
 
 	void readCountUpdate(int id);
 
+	void boardDelete(int id);
+
+	void boardModify(BoardVO boardVO);
+
 }

@@ -10,7 +10,7 @@
 	<form action="/login" method="post" >
 		<div class="form-group">
 			<label for="Username">Username</label> 
-			<input type="text"	class="form-control" placeholder="Enter Username" id="Username" name="username" required>
+			<input type="text"	class="form-control" placeholder="Enter Username" id="Username" name="username" required autocomplete="off">
 		</div>
 		
 		<div class="form-group">

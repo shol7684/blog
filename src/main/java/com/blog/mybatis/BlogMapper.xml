@@ -51,5 +51,13 @@
 	<update id="readCountUpdate">
 		 update blog_board set read_count = read_count + 1 where id = #{id }
 	</update>
+	
+	<delete id="boardDelete">
+		delete blog_board where id = #{id }
+	</delete>
+
+	<update id="boardModify">
+		update blog_board set title = #{title } , content = #{content } where id = #{id }
+	</update>
 
 </mapper>

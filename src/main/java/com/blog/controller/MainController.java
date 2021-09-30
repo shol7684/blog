@@ -15,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -169,6 +170,24 @@ public class MainController {
 		return "blog/detail";
 	}
 	
+	@PostMapping("/board/modifyPage")
+	public String modifyPage(Model model, BoardVO boardVO) {
+		model.addAttribute("boardVO" , boardVO);
+		
+		System.out.println(boardVO);
+		
+		return "blog/modify";
+	}
+	
+	@PostMapping("/board/modify") 
+	public String boardModify(BoardVO boardVO) {
+		
+		blogService.boardModify(boardVO);
+		
+		System.out.println("수정 " + boardVO);
+		
+		return "redirect:/board/detail/" + boardVO.getId();
+	}
 	
 	
 	
@@ -183,6 +202,14 @@ public class MainController {
 		return idCheck;
 	}
 	
+	@ResponseBody
+	@PostMapping("/board/delete")
+	public void boardDelete(int id) {
+		
+		System.out.println(id);
+		
+		blogService.boardDelete(id);
+	}
 	
 	
 

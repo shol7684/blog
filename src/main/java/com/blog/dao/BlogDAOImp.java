@@ -64,6 +64,18 @@ public class BlogDAOImp implements BlogDAO {
 	public void readCountUpdate(int id) {
 		sql.update(namespace + ".readCountUpdate", id);
 	}
+
+	@Override
+	public void boardDelete(int id) {
+		sql.delete(namespace + ".boardDelete" , id);
+		
+	}
+
+	@Override
+	public void boardModify(BoardVO boardVO) {
+		sql.update(namespace + ".boardModify" , boardVO);
+		
+	}
 	
 	
 }
